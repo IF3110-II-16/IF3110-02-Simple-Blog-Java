@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+    <ui:composition template="templateblog.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Login Page" />
+        </ui:define>
+        <ui:define name="content">
+            <h:form>
+                <h:outputLabel id="Role" class="Role" value="Masukkan Role Anda : " />
+                <h:selectOneMenu value="#{logindata.role}">
+                    <f:selectItem itemValue="Owner" itemLabel="Owner" />
+                    <f:selectItem itemValue="Editor" itemLabel="Editor" />
+                    <f:selectItem itemValue="Admin" itemLabel="Admin" />
+                    <f:selectItem itemValue="Guest" itemLabel="Guest" />
+                </h:selectOneMenu>
+                
+                <h:outputLabel id="User" class="User" value="Nama : "/>
+                <h:inputText id="User" class="User" value="#{logindata.nama}" />
+                
+                <h:outputLabel id="NamaAsli" class="NamaAsli" value="Nama lengkap : "/>
+                <h:inputText id="NamaAsli" class="NamaAsli" value="#{logindata.namaAsli}" />
+                
+                <h:outputLabel id="Email" class="Email" value="Email : "/>
+                <h:inputText id="Email" class="Email" value="#{logindata.email}" />
+                
+                <h:commandButton value="Login" id="Login" action="#{logindata.login}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
