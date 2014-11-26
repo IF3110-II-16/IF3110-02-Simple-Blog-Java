@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePagesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePagesLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{pagesController.selected.id}" title="#{bundle.CreatePagesTitle_id}" required="true" requiredMessage="#{bundle.CreatePagesRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreatePagesLabel_content}" for="content" />
+                    <h:inputText id="content" value="#{pagesController.selected.content}" title="#{bundle.CreatePagesTitle_content}" required="true" requiredMessage="#{bundle.CreatePagesRequiredMessage_content}"/>
+                    <h:outputLabel value="#{bundle.CreatePagesLabel_title}" for="title" />
+                    <h:inputText id="title" value="#{pagesController.selected.title}" title="#{bundle.CreatePagesTitle_title}" required="true" requiredMessage="#{bundle.CreatePagesRequiredMessage_title}"/>
+                    <h:outputLabel value="#{bundle.CreatePagesLabel_publish}" for="publish" />
+                    <h:inputText id="publish" value="#{pagesController.selected.publish}" title="#{bundle.CreatePagesTitle_publish}" required="true" requiredMessage="#{bundle.CreatePagesRequiredMessage_publish}"/>
+                    <h:outputLabel value="#{bundle.CreatePagesLabel_date}" for="date" />
+                    <h:inputText id="date" value="#{pagesController.selected.date}" title="#{bundle.CreatePagesTitle_date}" required="true" requiredMessage="#{bundle.CreatePagesRequiredMessage_date}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePagesLabel_softDelete}" for="softDelete" />
+                    <h:inputText id="softDelete" value="#{pagesController.selected.softDelete}" title="#{bundle.CreatePagesTitle_softDelete}" required="true" requiredMessage="#{bundle.CreatePagesRequiredMessage_softDelete}"/>
+                    <h:outputLabel value="#{bundle.CreatePagesLabel_owner}" for="owner" />
+                    <h:selectOneMenu id="owner" value="#{pagesController.selected.owner}" title="#{bundle.CreatePagesTitle_owner}" required="true" requiredMessage="#{bundle.CreatePagesRequiredMessage_owner}">
+                        <f:selectItems value="#{userController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{pagesController.create}" value="#{bundle.CreatePagesSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{pagesController.prepareList}" value="#{bundle.CreatePagesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePagesIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
